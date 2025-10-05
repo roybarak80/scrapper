@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Manual Metal Archives Web Scraper
-A Python script that opens headless Chrome and waits for manual navigation to Metal Archives.
+A Python script that opens Chrome and waits for manual navigation to Metal Archives.
 """
 
 import logging
@@ -17,12 +17,12 @@ from selenium.common.exceptions import TimeoutException, NoSuchElementException
 
 
 class ManualMetalArchivesScraper:
-    def __init__(self, headless=True):
+    def __init__(self, headless=False):
         """
         Initialize the manual scraper with Chrome WebDriver
         
         Args:
-            headless (bool): Whether to run Chrome in headless mode
+            headless (bool): Whether to run Chrome in headless mode (default: False for manual use)
         """
         self.headless = headless
         self.driver = None
@@ -180,8 +180,8 @@ def main():
     """Main function to run the manual scraper"""
     scraper = None
     try:
-        # Initialize scraper (set headless=False to see the browser)
-        scraper = ManualMetalArchivesScraper(headless=False)  # Set to False so you can see the browser
+        # Initialize scraper (headless=False so you can see the browser)
+        scraper = ManualMetalArchivesScraper(headless=False)
         
         # Wait for manual navigation
         if scraper.wait_for_manual_navigation():

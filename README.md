@@ -33,24 +33,38 @@ Run the basic scraper:
 python metal_archives_scraper.py
 ```
 
-### Enhanced Scraper (Recommended)
-Run the enhanced scraper with Cloudflare bypass:
+### Manual Scraper (Recommended)
+Run the manual scraper that waits for you to navigate:
+```bash
+python metal_archives_manual.py
+```
+
+### Enhanced Scraper (Legacy)
+Run the enhanced scraper with Cloudflare bypass (legacy version):
 ```bash
 python metal_archives_enhanced.py
 ```
 
-Both scripts will:
+The manual script will:
+- Launch a visible Chrome browser (non-headless)
+- Wait for you to manually navigate to Metal Archives
+- Automatically detect when you're on metal-archives.com
+- Scrape page information and log all activities
+
+The enhanced script will:
 - Launch a headless Chrome browser
-- Navigate to Metal Archives
-- Attempt to bypass Cloudflare protection (enhanced version)
+- Navigate to Metal Archives automatically
+- Attempt to bypass Cloudflare protection
 - Scrape page information and log all activities
 
 ## Files
 
 - `metal_archives_scraper.py` - Basic scraper script
-- `metal_archives_enhanced.py` - Enhanced scraper with Cloudflare bypass
+- `metal_archives_manual.py` - Manual scraper (recommended)
+- `metal_archives_enhanced.py` - Enhanced scraper with Cloudflare bypass (legacy)
 - `requirements.txt` - Python dependencies
 - `scraping.log` - Basic scraper log file
+- `manual_scraping.log` - Manual scraper log file
 - `enhanced_scraping.log` - Enhanced scraper log file
 
 ## Important Notes
@@ -63,10 +77,11 @@ Metal Archives uses Cloudflare protection which can block automated scrapers. Th
 - Multiple user agent rotation
 
 ### Usage Recommendations
-1. **Start with the enhanced version** for better success rates
-2. **Set `headless=False`** in the main function to see the browser and debug issues
-3. **Add delays** between requests to be respectful to the server
-4. **Check the logs** for detailed information about the scraping process
+1. **Start with the manual version** - it opens Chrome and waits for you to navigate manually
+2. **The manual scraper runs with `headless=False`** by default so you can see the browser
+3. **Simply navigate to metal-archives.com** in the opened Chrome window
+4. **The scraper will automatically detect** when you're on the site and start scraping
+5. **Check the logs** for detailed information about the scraping process
 
 ### Legal and Ethical Considerations
 - Always respect the website's robots.txt file
